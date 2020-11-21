@@ -1,0 +1,40 @@
+.card-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1rem;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, .25);
+    border-radius: 8px;
+    cursor: pointer;
+    
+    transition: all .6s;
+    animation: showCardMonster 2s 1;
+}
+
+.card-item:hover {
+    transform: scale(1.05)
+}
+
+.card-item h1 {
+    font: 700 2.4rem Poppins;
+    text-align: center;
+}
+
+.card-item h4 {
+    font: 400 1.6rem Poppins;
+    text-align: center;
+}
+
+@keyframes showCardMonster {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.card-item .monster-photo {
+    width: 100%;
+    object-fit: cover;
+}

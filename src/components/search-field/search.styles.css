@@ -1,0 +1,33 @@
+.search-content {
+    border-radius: 8px;
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #FFF;
+    max-width: 400px; 
+    width: 100%;
+
+    transition: all .4s;
+}
+  
+.search-content:focus-within {
+    transform: translateY(-3px);
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, .25);
+}
+
+.search-content img {
+    height: 32px;
+    object-fit: cover;
+    margin-right: 1rem;
+}
+  
+.search-monster-field {
+    outline: none;
+    border: none;
+    font: 700 1.6rem Poppins;
+    color: var(--color-background-secondary);
+    width: 100%;
+    padding: 1rem 0px;
+}
+
