@@ -14,6 +14,7 @@ const SearchField = (props) => {
             <input 
                   className="search-monster-field" 
                   type="text" 
+                  placeholder="Search for monsters.."
                   onChange={props.searchHandler} />
           </div>
     )

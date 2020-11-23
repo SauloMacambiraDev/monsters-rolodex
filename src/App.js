@@ -25,7 +25,7 @@ class App extends Component {
   }
 
   componentDidUpdate() {
-    console.log(this.state);
+    // console.log(this.state);
   }
 
   fetchMonsters = () => {
@@ -40,19 +40,26 @@ class App extends Component {
 
   // CUSTOM COMPONENT METHODS
   handleSearchMonsterField = e => {
+    this.setState({ showLoading: true });
     const lastSearchFieldValue = e.target.value;
-    this.setState({ showLoading: true});
 
     setTimeout(() => {
+      this.setState({ showLoading: false });
+
       // if last search field value is equal to the current search field value, then:
       if (lastSearchFieldValue === e.target.value) {
-        this.setState({ showLoading: false });
-
-        this.setState({searchMonster: e.target.value});
-        if (this.state.searchMonster !== '') {
-          this.setState({ monsters: this.state.monsters.filter(monster => {
-            return (monster.name.toLowerCase().indexOf(this.state.searchMonster.toLowerCase()) != -1);
-          })});
+        
+        if (e.target.value !== '') {
+          // this.setState() is an async function, so in order to check if it was indeed updated
+          // use the component life cycle method componentDidUpdate()
+          // or even use the second parameter from this.setState(object, callbackFunction) working as a callback function with the final result
+          this.setState({ 
+            searchMonster: e.target.value, 
+            monsters: this.state.monsters.filter(monster => {
+              return (monster.name.toLowerCase().includes(e.target.value.toLowerCase()));
+          })}, () => {
+            console.log('Old callback to see the async result of an setState() method ');
+          });
 
         } else {
           console.log('Fetch monsters..')
